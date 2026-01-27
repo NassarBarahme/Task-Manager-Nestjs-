@@ -23,6 +23,7 @@ import { Logger } from '@nestjs/common';
 export class TasksController {
   constructor(private tasksService: TasksService) {}
   private logger = new Logger('TasksController');
+
   @Get('/:id')
   getTaskById(@Param('id') id: string, @GetUser() user: User): Promise<Task> {
     this.logger.log(`User "${user.userName}" retrieving task with id: ${id}`);
