@@ -9,6 +9,6 @@ import { TasksRepository } from './tasks.repository';
 @Module({
   imports: [TypeOrmModule.forFeature([Task]), AuthModule],
   controllers: [TasksController],
-  providers: [TasksService, TasksRepository], // ✅ هون الحل
+  providers: [TasksService, TasksRepository],
 })
 export class TasksModule {}
