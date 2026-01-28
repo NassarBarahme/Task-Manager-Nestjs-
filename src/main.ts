@@ -26,7 +26,8 @@ async function bootstrap(): Promise<void> {
   // Swagger Configuration
   const config = new DocumentBuilder()
     .setTitle('Task Management API')
-    .setDescription(' Nassar Barahmeh - Task Management API')
+    .setDescription('Nassar Barahmeh - Task Management API')
+    .setVersion('1.0')
     .addBearerAuth(
       {
         type: 'http',
@@ -42,6 +43,11 @@ async function bootstrap(): Promise<void> {
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
+
+  // ← هون حط الكود الجديد! 👇
+  app.getHttpAdapter().get('/', (req, res) => {
+    res.redirect('/api');
+  });
 
   const port = process.env.PORT || 3000;
   await app.listen(port);
